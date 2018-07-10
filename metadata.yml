@@ -1,0 +1,56 @@
+---
+code_id: 13357
+open_source: true
+repository_link: "https://github.com/jeinstei/SPRFSim"
+accessibility: "OS"
+software_type: "S"
+developers:
+- email: ""
+  orcid: "0000-0002-1518-0652"
+  first_name: "Jonathan"
+  last_name: "Edelen"
+  middle_name: ""
+  affiliations:
+  - "Fermi National Accelerator Lab. (FNAL), Batavia, IL (United States)"
+- email: "jeinstei@fnal.gov"
+  orcid: "0000-0003-3579-7024"
+  first_name: "Joshua"
+  last_name: "Einstein-Curtis"
+  middle_name: ""
+  affiliations:
+  - "Fermi National Accelerator Lab. (FNAL), Batavia, IL (United States)"
+contributors:
+- email: ""
+  orcid: ""
+  first_name: "Brian"
+  last_name: "Chase"
+  middle_name: ""
+  affiliations:
+  - "Fermi National Accelerator Lab. (FNAL), Batavia, IL (United States)"
+sponsoring_organizations:
+- organization_name: "USDOE Office of Science (SC), High Energy Physics (HEP) (SC-25)"
+  funding_identifiers: []
+  primary_award: "AC02-07CH11359"
+  DOE: true
+contributing_organizations: []
+research_organizations:
+- organization_name: "Fermi National Accelerator Laboratory (FNAL), Batavia, IL (United\
+    \ States)"
+  DOE: true
+related_identifiers: []
+release_date: "2018-07-10"
+software_title: "SPRFSim"
+acronym: "SPRFSim"
+doi: "10.11578/dc.20180710.15"
+description: "SPRFSim is a code that performs RF/Beam interaction simulations for\
+  \ an ion LINAC. The input files can be constructed from scratch or parsed from PARMELA\
+  \ or TraceWin simulations. The code is written in Python, and relies on matplotlib\
+  \ and numpy. "
+programming_languages:
+- "Python"
+country_of_origin: "United States"
+licenses:
+- "GNU General Public License v3.0"
+recipient_org: "Fermi National Accelerator Laboratory"
+date_record_added: "2018-07-10"
+date_record_updated: "2018-07-10"

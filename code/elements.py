@@ -26,10 +26,13 @@ class rf_cavity:
 	## The RF cavity class defines the parameters for each cavity and computes the RF feedback response.
 	## The feedback response updates the beam parameters for each cavity. 
 	
-	def __init__(self,f0,f,L,V,phase,z,cavity_index,ele,name,
+	def __init__(self, f0 = 0.0, f = 0.0, L = 0.0, V = 0.0, phase = 0.0, z = 0.0, 
+		cavity_index = 0.0, ele = 0.0, name = 'None',
 		QL = 1.0e6, RoverQ = 200, kp = 0, ki = 0,
 		phase_error = 0, voltage_error = 0,
-		feed_forward_magnitude = 0, feed_forward_phase = 0, feed_forward_time_error = 0, feed_forward_width = 500e-6, ki_ff = 0.2, ki_ff_time = 1.0e-8, group_delay = 2.5e-6):
+		feed_forward_magnitude = 0, feed_forward_phase = 0, 
+		feed_forward_time_error = 0, feed_forward_width = 500e-6, 
+		ki_ff = 0.2, ki_ff_time = 1.0e-8, group_delay = 2.5e-6):
 		
 		self.f = f
 		self.f0 = f0
@@ -88,13 +91,13 @@ class rf_cavity:
 		beam energy""" 
 		
 		""" Phase advance calculations """
-		delta_phi = self.L/2.0*self.w/(beam.beta_envelope[-1]*c0)
+		delta_phi = self.L/2.0 * self.w/(beam.beta_envelope[-1] * c0)
 		delta_E = 0. * delta_phi			
-		delta_phi_r = self.L/2.0*self.w/(beam.beta_reference[-1]*c0)
+		delta_phi_r = self.L/2.0 * self.w/(beam.beta_reference[-1] * c0)
 		delta_E_r = 0. * delta_phi_r
 
 		""" Update the beam parameters """
-		beam.update_parameters(delta_E_r,delta_phi_r,delta_E,delta_phi,self.z)
+		beam.update_parameters(delta_E_r, delta_phi_r, delta_E, delta_phi, self.L/2.)
 
 		amplitude_out,phase_out = self.rf_simulation(beam)
 
@@ -105,16 +108,16 @@ class rf_cavity:
 		self.delta_phi = 0. * self.delta_E
 		
 		""" Update the beam parameters """
-		beam.update_parameters(self.delta_E_reference,self.delta_phi_reference,self.delta_E,self.delta_phi,self.z)
+		beam.update_parameters(self.delta_E_reference,self.delta_phi_reference,self.delta_E,self.delta_phi, 0.)
 
 		""" Second phase advance calculations """
-		delta_phi = self.L/2.0*self.w/(beam.beta_envelope[-1]*c0)
+		delta_phi = self.L/2.0 * self.w/(beam.beta_envelope[-1] * c0)
 		delta_E = 0. * delta_phi			
-		delta_phi_r = self.L/2.0*self.w/(beam.beta_reference[-1]*c0)
+		delta_phi_r = self.L/2.0 * self.w/(beam.beta_reference[-1] * c0)
 		delta_E_r = 0. * delta_phi_r
 
 		""" Final update of beam parameters """
-		beam.update_parameters(delta_E_r,delta_phi_r,delta_E,delta_phi,self.z+self.L/2)
+		beam.update_parameters(delta_E_r, delta_phi_r, delta_E, delta_phi, self.L/2.)
 
 		#self.update_feed_forward()
 
@@ -309,7 +312,7 @@ class drift:
 		and of the reference particle based on the velocity of the beam and returns that information
 		to the beam class."""
 
-	def __init__(self,f0,L,z,ele):
+	def __init__(self, f0 = 0.0, L = 0.0, z = 0.0, ele = 0):
 		"""Drift class initialization and definitions:
 	
 	
@@ -343,7 +346,7 @@ class drift:
 		delta_E_r = 0. * delta_phi_r
 
 		""" Update the beam parameters """
-		beam.update_parameters(delta_E_r,delta_phi_r,delta_E,delta_phi,self.z)
+		beam.update_parameters(delta_E_r, delta_phi_r, delta_E, delta_phi, self.L)
 		
 		return beam
 	
@@ -412,13 +415,13 @@ class beam:
 		self.beta_reference = [numpy.sqrt(1-1/self.gamma_reference[0]**2)]
 
 		self.z = [0]
-
+		self.s = 0
 		self.hold_arrays = hold_arrays
 		
 		self.name = 'beam'
 
 		
-	def update_parameters(self,delta_E_r,delta_phi_r,delta_E,delta_phi,z):
+	def update_parameters(self,delta_E_r,delta_phi_r,delta_E,delta_phi,L):
 		""" Update the beam parameters 
 		
 		
@@ -445,7 +448,8 @@ class beam:
 		self.beta.append(numpy.sqrt(1-1/self.gamma[-1]**2))
 		
 		""" Update the position vector """
-		self.z.append(z)
+		self.s += L
+		self.z.append(self.s)
 		
 		""" Update the current vector needed for chopping """ 
 		self.current_vector = self.current * self.mask		

@@ -8,9 +8,7 @@ import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.rcParams.update({'font.size': 16})
 
-#from simulation_elements import *
-from elements import *
-
+import elements 
 import make_lattice
 
 ## Constants and parameters
@@ -31,7 +29,7 @@ if __name__ == "__main__":
     lattice0 = make_lattice.PIP_II_cdr(0.0,0.0e-6,515e-6,0,0,0,0)
 
     ## This creates the simulation
-    sim0 = simulation(lattice0)
+    sim0 = elements.simulation(lattice0)
 
     ## This creates a beam that is
     initial_energy = 2.1e6  #eV
@@ -43,7 +41,7 @@ if __name__ == "__main__":
     beam_delay = 0 #This is for feed-forward compensation, is not being used in this run
     beam_mc2 = mc2
 
-    beam1 = beam(0,initial_energy,initial_reference_energy,beam_current,
+    beam1 = elements.beam(0,initial_energy,initial_reference_energy,beam_current,
         number_of_slices,start_time,stop_time,beam_delay,beam_mc2,
         profile='top-hat',filename = 'current_profile.csv')
 

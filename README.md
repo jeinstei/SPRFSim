@@ -2,11 +2,11 @@
 
 ## Introduction
 
-linac.py is the main file to tune here.
+single_cavity_example.py is the first example to look at. Also the paper in documents describs the engine behind the code
 
 ## Running the Code
 
-Run "python linac.py" or "./linac.py"
+Run "python single_cavity_example.py"
 
 ## Requirements
 

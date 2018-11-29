@@ -1,0 +1,1864 @@
+
+;=====Comment Section=== ===================================
+; This Lattice is used for Conceptual Design Report of PIP-II 
+; Changes from RDR lattice are followings:
+; -----Sept. 2016
+; LB650, HB650 periods has been changed to reflect recent developments in CM design
+
+;:---Dated 10 Feb 2017: Arun modified MEBT to add a wal... l
+
+
+;=====Comment Section Closed================================
+
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+; Start MEBT
+; Slow valve, Toroid
+;=================================
+;READ_OUT C:\Users\asaini\Documents\TraceWin\Work\CWLinac\PIP_II\CDR_Optics\Working\LB_7End.out
+
+
+DRIFT 250 16 0; 
+FIELD_MAP_PATH /Users/jedelen/Documents/Projects/Fermilab/FNAL_PIP-II/800MeVLinac/Fields
+FREQ 162.5
+;-------------------------------------------------------------------
+; Doublet #1 (370 mm ) 
+;==================================
+DRIFT 50 15 0
+APERTURE 15 15 1
+QUAD 100 11.75 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 35 15 0
+DRIFT 1e-008 14 0 ;------------ BPM1 (inside doublet)
+DRIFT 35 15 0
+APERTURE 15 15 1
+QUAD 100 -10.28 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 50 15 0
+DRIFT 9 15 0               ;------------------------------------------Additional Drift added
+THIN_STEERING 0 0 15 0 ; --------- Y-corrector
+
+;----------------;Ring Pick up  Additional drift added compare to old/previous version
+DRIFT 9 15 0 
+DRIFT 40.4 15 0 
+DRIFT 50 15 0 
+
+; Scrapper - collimator (100 mm) 
+;==================================
+DRIFT 50 15 0
+DRIFT 1e-20 15 0
+;APERTURE 5.95 15 0; rect. collimator   0 mA
+APERTURE 8.0 15 0; rect. collimator 5 mA
+DRIFT 1e-20 15 0
+; APERTURE 15 4.95 0  ;  0 mA
+APERTURE 15 5.55 0; rect. collimator  5 mA
+
+DRIFT 50 15 0
+;--------------------------------------------------------------------
+
+DRIFT 20.0 15 0             ; ----------Addtional Drift Added 
+;
+; QWR buncher#1 (300 mm)
+;==================================
+DRIFT 30 15 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 240 -90 20 0.062 0.062 0 0 QWR-2012-02
+DRIFT 30 15 0
+;-----------------------------------------------------------------------
+;
+
+DRIFT 1.6 15 0                    ; ---------------- Additional Drift 
+
+; Doublet #2 (370 mm ) 
+;====================================
+DRIFT 50 15 0
+APERTURE 15 15 1
+QUAD 100 7.54 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 35 15 0
+DRIFT 1e-008 14 0;--------------------------------- BPM2 (Lz<50mm, inside doublet, space available 20mm)
+DRIFT 35 15 0
+APERTURE 15 15 1
+QUAD 100 -5.6 15 0 0 0 0 0
+APERTURE 15 15 1
+
+DRIFT 50 15 0
+DRIFT 9 15 0                             ;-----------------------------------Additional Drift 
+THIN_STEERING 0 0 15 0 ; --------- Y-corrector
+APERTURE 15 15 1
+THIN_STEERING 0 2.0e-06 15 0 ; --------- x-corrector
+;--------------------------------------------------------------------
+;
+
+; Diagnostics: laser wire, scrapper, wire profile monitor, vacuum (600 mm)
+;===================================
+DRIFT 100 15 0
+DRIFT 75 15 0
+DRIFT 350 25 0 ; diagnostics section
+DRIFT 25 15 0
+DRIFT 26 15 0
+;----------------------------------------------------------------------
+
+
+; Scrapper (colllimator)
+;==================================
+DRIFT 50 15 0
+DRIFT 1e-20 15 0
+APERTURE 5.2 15 0 ; collimator before diagnostic section
+DRIFT 1e-20 15 0
+APERTURE 15 5.15 0 ; collimator before diagnostic section
+
+DRIFT 50 15 0
+;----------------------------------------------------------------------
+
+
+DRIFT 50 15 0    ;  Additional Drift Before First triplet 
+
+; Triplet #1 (440 mm)
+;===================================
+DRIFT 50 15 0
+APERTURE 15 15 1
+QUAD 50 10.636 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 70 15 0
+APERTURE 15 15 1
+QUAD 100 -9.85 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 35 15 0
+DRIFT 1e-008 14 0;----------------------- BPM 3 (Lz<50mm)
+DRIFT 35 15 0
+APERTURE 15 15 1
+QUAD 50 10.636 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 50 15 0
+DRIFT 6.5 15 0
+DRIFT 1e-10 15 0
+;THIN_STEERING 0 0 15 0 ; --------- X,Y-corrector
+
+THIN_STEERING 0 8e-06 15 0 ; --------- X-corrector
+;-----------------------------------------------------------------------
+;
+; Kicker (chopper#1) 650mm flange-to-flange+50mm bellow
+;====================================
+DRIFT 100 15 0
+APERTURE 20 6.46 0
+DRIFT 25 15 0 
+DRIFT 18.5 15 0 
+;LATTICE  16 0 
+DRIFT 1e-10 15 0
+CHOPPER 2 250 8 0 1
+DRIFT 250 15 0
+DRIFT 250 15 0
+APERTURE 20 6.46 0
+DRIFT 50 15 0
+DRIFT 35 15 0;-----------------bellow ?
+
+;LATTICE 14 0
+;-------------------------------------------------------------------------
+; Triplet #2 (440 mm) 
+;====================================
+DRIFT 50 15 0
+APERTURE 15 15 1
+QUAD 50 12.63 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 70 15 0
+QUAD 100 -11.4 15 0 0 0 0 0
+DRIFT 35 15 0
+DRIFT 1e-008 14 0 ;----------------------------------- BPM4 (Lz < 50mm)
+DRIFT 35 15 0
+APERTURE 15 15 1
+QUAD 50 12.63 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 50 15 0
+APERTURE 15 15 1
+DRIFT 6.5 15 0
+THIN_STEERING 0 0 15 0 ; --------- Y-corrector
+DRIFT 3.5 15 0
+;----------------------------------------------------------------------
+; 
+;-----------------------------------------------------------------------
+;
+; QWR buncher#2 - After Moving upstream to triplet system
+;===================================
+DRIFT 30 15 0
+;MATCH_FAM_FIELD 8
+SET_SYNC_PHASE 
+FIELD_MAP 7700 240 -90 20 0.0535 0.0535 0 0 QWR-2012-02
+DRIFT 20 15 0
+
+
+; Diagnostics section: Wire scanner, Fast Faraday cup
+;===================================
+
+DRIFT 330 15 0 ; Diagnistics box
+DRIFT 95 15 0
+DRIFT 10 15 0
+;-----------------------------------------------------------------------
+;
+; QWR buncher#2 - (300 mm flange-to-flange)+50mm bellow : Original Position
+;===================================
+;DRIFT 30 15 0
+;MATCH_FAM_FIELD 8
+;SET_SYNC_PHASE 
+;FIELD_MAP 7700 240 -90 20 0.055 0.055 0 0 QWR-2012-02
+;DRIFT 20 15 0
+;--------------------------------------------------------------------
+
+;LATTICE 14 0
+
+; Triplet #3 (440 mm) 
+;==================================
+DRIFT 50 15 0
+APERTURE 15 15 1
+QUAD 50 13.08 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 70 15 0
+QUAD 100 -11.35 15 0 0 0 0 0
+DRIFT 35 15 0
+DRIFT 1e-008 14 0 ; ----------------------------------BPM5
+DRIFT 35 15 0
+APERTURE 15 15 1
+QUAD 50 13.08 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 50 15 0
+DRIFT 6.5 15 0
+THIN_STEERING 0 0 15 0 ; --------- X-corrector
+APERTURE 15 15 1
+APERTURE 15 15 1
+THIN_STEERING 0 0 15 0 ; --------- Y-corrector
+DRIFT 50 15 0
+DRIFT 3.5 15 0
+;-----------------------------------------------------------------------
+;
+; Kicker (chopper#2) 650mm flange-to-flange+50mm
+;====================================
+DRIFT 100 15 0
+APERTURE 20 6.46 0
+
+CHOPPER 2 -250 8 0 1
+DRIFT 250 15 0
+DRIFT 250 15 0
+APERTURE 20 6.46 0
+DRIFT 50 15 0
+DRIFT 25 15 0 ;--------------------bellow ???
+DRIFT 1e-20 15 0
+;--------------------------------------------------------------------
+;
+; Triplet #4 (440 mm) with steering
+;==================================
+DRIFT 50 15 0
+APERTURE 15 15 1
+QUAD 50 11.975 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 70 15 0
+QUAD 100 -10.66 15 0 0 0 0 0
+DRIFT 35 15 0
+DRIFT 1e-008 14 0;---------------------------------- BPM6
+DRIFT 35 15 0
+APERTURE 15 15 1
+QUAD 50 11.975 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 50 15 0
+
+DRIFT 6.5 15 0
+THIN_STEERING 0.0005025 0 15 0 ;--- Y-correctorfor V-steering 
+APERTURE 15 15 1
+THIN_STEERING 0.0005025 0 15 0 ;--- Y-correctorfor V-steering 
+APERTURE 15 15 1
+DRIFT 3.5 15 0
+DRIFT 40 15 0
+DRIFT 100 15 0
+;;;-----------------------------------------------------------------
+; MEBT Absorber, 50 cm, OTR
+;=================================
+;BEAM_ROT 0 0 0 0 -10 0 0 0 0
+
+DRIFT 50 15 15
+;APERTURE -10.5 9 5
+DRIFT 50 15 15
+;APERTURE -10.25 9.5 5
+DRIFT 50 15 15
+;APERTURE -10 10 5
+DRIFT 50 15 15
+;APERTURE -9.75 10.5 5
+DRIFT 50 15 15          ;------------------------- Absorber Center 
+;APERTURE -9.5 11 5
+DRIFT 50 15 15
+;APERTURE -9.25 11.5 5
+DRIFT 50 15 15
+;APERTURE -9 12 5
+DRIFT 50 15 15
+;APERTURE -8.75 12.5 5
+DRIFT 50 15 15          ;------------------------- Absorber Center 
+;APERTURE -8.5 13 5
+DRIFT 50 15 15
+;APERTURE -8.5 13 5
+;-------------------------------------------------------------------
+DRIFT 50 15 0
+DRIFT 35 15 15
+; Triplet #5 (440 mm) with V-steering
+;==================================
+DRIFT 50 15 0
+APERTURE 15 15 1
+QUAD 50 13.52 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 70 15 0
+QUAD 100 -12.0 15 0 0 0 0 0
+DRIFT 35 15 0
+DRIFT 1e-008 14 0 ;------------------------- BPM7
+DRIFT 35 15 0
+APERTURE 15 15 1
+QUAD 50 13.52 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 50 15 0
+DRIFT 6.5 15 0
+THIN_STEERING -0.00131913945 0 15 0 ; --- Y-correctorfor V-steering 
+APERTURE 15 15 1
+THIN_STEERING 0 0.00000 15 0 ;--- x-correctorfor V-steering 
+APERTURE 15 15 1
+DRIFT 3.5 15 0
+
+;---------------------------------------------------------------
+; Diagnostics, diff.pumping
+;================================
+DRIFT 100 15 0
+DRIFT 25 15 0
+DRIFT 100 15 0
+DRIFT 1e-20 15 0
+DRIFT 50 25 0
+APERTURE 5 5 1
+DRIFT 1e-20 15 0
+DRIFT 200 25 0      ;------diagnostics/pumping box
+APERTURE 5 5 1
+DRIFT 50 15 0
+DRIFT 200 15 0
+;==========================
+
+;-----------------------------------------------------------------
+;
+; Triplet #6 (440 mm) 
+;=================================
+DRIFT 50 15 0
+APERTURE 15 15 1
+QUAD 50 13.8 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 70 30 0
+QUAD 100 -12.18 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 35 15 0
+DRIFT 1e-008 14 0 ;----------------------- BPM8
+DRIFT 35 15 0
+APERTURE 15 15 1
+QUAD 50 13.8 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 50 15 0
+DRIFT 6.5 15 0
+THIN_STEERING 0 0.00000 15 0 ; --------- X-corrector
+APERTURE 15 15 1
+THIN_STEERING 0.000045 0 15 0 ; --------- Y-corrector
+APERTURE 15 15 1
+DRIFT 3.5 15 0
+;--------------------------------------------------------------
+;
+
+;
+; QWR buncher#3 - 240mm+20mm bellow
+;===============================
+DRIFT 30 15 0
+;MATCH_FAM_FIELD 8
+SET_SYNC_PHASE 
+FIELD_MAP 7700 240 -90 20 0.038 0.038 0 0 QWR-2012-02
+DRIFT 20 15 0
+
+DRIFT 35 15 0
+DRIFT 100 15 0
+DRIFT 100 15 0
+DRIFT 100 15 0
+DRIFT 100 15 0
+
+;
+; Triplet #7 (440 mm) 
+;=================================
+DRIFT 50 15 0
+APERTURE 15 15 1
+QUAD 50 10.0 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 70 30 0
+QUAD 100 -9.46 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 35 15 0
+DRIFT 1e-008 14 0 ;----------------------- BPM8
+DRIFT 35 15 0
+APERTURE 15 15 1
+QUAD 50 10.0 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 50 15 0
+
+DRIFT 6.5 15 0
+THIN_STEERING 0 0.00000 15 0 ; --------- X-corrector
+APERTURE 15 15 1
+THIN_STEERING 0e-006 0 15 0 ; --------- Y-corrector
+APERTURE 15 15 1
+DRIFT 3.5 15 0
+;--------------------------------------------------------------
+;
+DRIFT 10 15 0 
+DRIFT 25 15 0
+DRIFT 70 15 0
+DRIFT 290 15 0
+DRIFT 100 15 0
+DRIFT 50 15 0
+
+;
+; ; Scrapper (collimator)
+;===============================
+DRIFT 40 15 0 
+DRIFT 50 15 0
+DRIFT 1e-20 15 0
+APERTURE 9 9 0
+DRIFT 1e-20 15 0
+APERTURE 9 9 0
+DRIFT 90 15 0
+
+
+;
+; Triplet #8 (440 mm) 
+;=================================
+DRIFT 50 15 0
+APERTURE 15 15 1
+;MIN_ENV_VARIATION  10 100
+
+;MATCH_FAM_GRAD 10 3  
+QUAD 50 7.7 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 70 30 0
+;MATCH_FAM_GRAD 10    
+QUAD 100 -7.4 15 0 0 0 0 0
+APERTURE 15 15 1
+
+DRIFT 35 15 0
+DRIFT 1e-008 14 0 ;----------------------- BPM8
+DRIFT 35 15 0
+APERTURE 15 15 1
+;MATCH_FAM_GRAD 10 3
+QUAD 50 7.7 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 50 15 0
+
+DRIFT 6.5 15 0
+THIN_STEERING 0 0.00000 15 0 ; --------- X-corrector
+APERTURE 15 15 1
+THIN_STEERING -0e-006 0 15 0 ; --------- Y-corrector
+APERTURE 15 15 1
+DRIFT 3.5 15 0
+;--------------------------------------------------------------
+ 
+DRIFT 100 13 0 ;------------------------Wall Region 
+DRIFT 100 13 0 ;------------------------Wall Region 
+DRIFT 100 13 0 ;------------------------Wall Region 
+DRIFT 100 13 0 ;------------------------Wall Region 
+DRIFT 100 13 0 ;------------------------Wall Region 
+DRIFT 100 13 0 ;------------------------Wall Region 
+DRIFT 100 13 0 ;------------------------Wall Region 
+DRIFT 25 13 0 ;------------------------Wall Region 
+;-----------------------------------------------------------------
+; Triplet #9 (440 mm) 
+;=================================
+DRIFT 50 15 0
+APERTURE 15 15 1
+;MATCH_FAM_GRAD 10  1  
+QUAD 50 7. 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 70 15 0
+;MATCH_FAM_GRAD 10   
+QUAD 100 -6.80 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 35 15 0
+DRIFT 1e-008 14 0 ;---------------------- BPM9
+DRIFT 35 15 0
+APERTURE 15 15 1
+;MATCH_FAM_GRAD 10  1 
+QUAD 50 7.0 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 50 15 0
+DRIFT 6.5 15 0
+THIN_STEERING 0 0.0e-06 15 0 ; --------- X-corrector
+APERTURE 15 15 1
+THIN_STEERING 15e-006 0 15 0 ; --------- Y-corrector
+APERTURE 15 15 1
+DRIFT 3.5 15 0
+;---------------------------------------------------------------
+;
+; ; Scrapper (collimator)
+;===============================
+DRIFT 100 15 0
+DRIFT 50 15 0
+DRIFT 5 15 0 
+DRIFT 100 15 0
+DRIFT 40 15 0 
+DRIFT 1e-20 15 0
+APERTURE 9 9 0
+DRIFT 1e-20 15 0
+APERTURE 9 9 0
+DRIFT 90 15 0
+; QWR buncher#3 - 240mm+20mm bellow
+;===============================
+DRIFT 30 15 0
+MATCH_FAM_FIELD 8
+SET_SYNC_PHASE 
+FIELD_MAP 7700 240 -90 20 0.062 0.062 0 0 QWR-2012-02
+DRIFT 20 15 0
+DRIFT 50 15 0
+
+
+; Triplet #10 (440 mm) 
+;=================================
+DRIFT 50 15 0
+APERTURE 15 15 1
+;MIN_FIELD_VARIATION  1 25 0.6
+;MATCH_FAM_GRAD 10  2 
+QUAD 50 12.58 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 70 15 0
+;MATCH_FAM_GRAD 10  
+QUAD 100 -11.41 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 35 15 0
+DRIFT 1e-008 14 0 ;---------------------- BPM9
+DRIFT 35 15 0
+APERTURE 15 15 1
+;MATCH_FAM_GRAD 10 2   
+QUAD 50 12.58 15 0 0 0 0 0
+APERTURE 15 15 1
+DRIFT 50 15 0
+DRIFT 6.5 15 0
+THIN_STEERING 0 -0.0e-006 15 0 ; --------- X-corrector
+APERTURE 15 15 1
+THIN_STEERING 1e-005 0 15 0 ; --------- Y-corrector
+APERTURE 15 15 1
+DRIFT 3.5 15 0
+;---------------------------------------------------------------
+
+
+; Scrapper (Collimator) Scraper Removed 
+;================================
+DRIFT 190 15 0
+DRIFT 1e-20 15 0
+;APERTURE 9 9 0
+DRIFT 1e-20 15 0
+DRIFT 50 15 0
+DRIFT 100 15 0
+DRIFT 100 15 0
+DRIFT 100 15 0
+DRIFT 100 15 0
+DRIFT 100 15 0
+DRIFT 100 15 0
+DRIFT 100 15 0
+
+DRIFT 1e-10 15 0
+; --------------------------------------------------------------
+
+
+; /////////////////Begining of HWR cryomodule\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+DRIFT 176.14 10 0
+DRIFT 1e-009 14 10
+
+FREQ 162.5 
+LATTICE 4 0
+; Period #1 begin------------------------------------------------------------- 
+;MATCH_FAM_GRAD 8
+FIELD_MAP 10 300 0 16 1.9 0 0 0 HWR-SOL-ANLMAP
+;------------------------------ BPM11
+DRIFT 80.6 16 0
+SET_SYNC_PHASE
+MATCH_FAM_PHASE 8
+MATCH_FAM_FIELD 8
+FIELD_MAP 7700 250 -50 16.5 0.34 0.34 0 0 HWRDonut
+DRIFT 55.2 16 0
+
+
+; Period #1 e.n.d-------------------------------------------------------------
+
+; Period #2 begin-------------------------------------------------------------
+;MATCH_FAM_GRAD 8 
+FIELD_MAP 10 300 0 16 -1.85 0 0 0 HWR-SOL-ANLMAP
+;-------------------------------BPM12
+DRIFT 80.6 16 0
+SET_SYNC_PHASE
+MATCH_FAM_PHASE 8
+MATCH_FAM_FIELD 8
+FIELD_MAP 7700 250 -38 16.5 0.49 0.49 0 0 HWRDonut
+DRIFT 55.2 16 0
+; Period #2 e.n.d----------------------------------------------------------------
+
+; Period #3 begin----------------------------------------------------------
+FIELD_MAP 10 300 0 16 2.1 0 0 0 HWR-SOL-ANLMAP
+;-----------------------------BPM13
+DRIFT 80.6 16 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 250 -37 16.5 0.73 0.73 0 0 HWRDonut
+DRIFT 55.2 16 0
+; Period #3 e.n.d-----------------------------------------------------------
+
+
+; Period #4 begin------------------------------------------------------------
+FIELD_MAP 10 300 0 16 -2.31 0 0 0 HWR-SOL-ANLMAP
+;-----------------------------BPM14
+DRIFT 80.6 16 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 250 -33 16.5 0.95 0.95 0 0 HWRDonut
+DRIFT 55.2 16 0
+; Period #4 e.n.d----------------------------------------------------------
+ 
+
+
+; Period #5 begin----------------------------------------------------------
+FIELD_MAP 10 300 0 16 2.56 0 0 0 HWR-SOL-ANLMAP
+;-------------------------------BPM15
+DRIFT 80.6 16 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 250 -28 16.5 1.5 1.5 0 0 HWRDonut
+DRIFT 55.2 16 0
+; Period #5 e.n.d---------------------------------------------------------
+
+; Period #6 begin---------------------------------------------------------
+FIELD_MAP 10 300 0 16 -2.5 0 0 0 HWR-SOL-ANLMAP
+;-------------------------------BPM16.
+DRIFT 80.6 16 0
+SET_SYNC_PHASE
+;MATCH_FAM_PHASE 2
+FIELD_MAP 7700 250 -23 16.5 2.0 2.0 0 0 HWRDonut
+DRIFT 55.2 16 0
+; Period #6 e.n.d------------------------------------------------------
+
+; Period #7 begin------------------------------------------------------
+FIELD_MAP 10 300 0 16 2.2 0 0 0 HWR-SOL-ANLMAP
+;-------------------------------BPM17
+DRIFT 80.6 16 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 250 -20 16.5 2.0 2.0 0 0 HWRDonut
+DRIFT 55.2 16 0
+; Period #7 e.n.d------------------------------------------------------
+
+; Period #8 begin------------------------------------------------------
+FIELD_MAP 10 300 0 16 -3.15 0 0 0 HWR-SOL-ANLMAP
+;-------------------------------BPM18
+DRIFT 80.6 16 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 250 -23 16.5 2.0 2.0 0 0 HWRDonut
+DRIFT 55.2 16 0
+; Period #8 e.n.d--------------------------------------------------------
+LATTICE_END
+DRIFT 169.812 16 0
+
+
+;+++++  Drift of 95.656 mm is added berween 8 th HWR cavity center and HWR Gate Valve .++++++
+DRIFT 95.656  16 0
+
+;////////////////// End of HWR cryomodule\\\\\\\\\\\\\\\\\\\\
+
+;====== HWR flange to SSR1 flange (Absorber assembley) (175 mm)========== 
+DRIFT 45 12 0
+DRIFT 45 12 0
+DRIFT 85 20 0
+
+;///////////////////same length in Optim as well \\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+;+++++  Drift of 75 mm is added berween HWR1 and SSR1Cryomodule.++++++++++++++
+;++++++ Changes are proposed by Tom Nikol, Curtis. Buffes @ 15 July 2014++++++++++++++
+
+DRIFT 75 20 0 
+
+;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;///////////////// Begining of first  SSR1 cryomodule\\\\\\\\\\\\\\\\\\\\
+
+;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+DRIFT 35 12 0
+DRIFT 116.5 15 0
+DRIFT 1e-010 15 0
+DRIFT 1e-010 15 0
+
+FREQ 325
+LATTICE 9 0
+
+; Period #1 begin---------------------------------------------------------
+DRIFT 15 14.5 0
+DRIFT 60 14.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 300 -32 15 1.2 1.2 0 0 SSR13D_#72
+DRIFT 100 14.5 0
+FIELD_MAP 10 300 0 16 -3.55 0 0 0 SS1-solenoid
+;--------------------------------------------BPM21
+DRIFT 100 14.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 300 -31 15 0.8 0.8 0 0 SSR13D_#72
+DRIFT 60 14.5 0
+DRIFT 15 14.5 0
+; Period #1 e.n.d--------------------------------------------------------------
+
+; Period #2 begin-------------------------------------------------------------
+DRIFT 15 14.5 0
+DRIFT 60 14.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 300 -28 15 1.1 1.1 0 0 SSR13D_#72
+DRIFT 100 14.5 0
+FIELD_MAP 10 300 0 16 -3.30 0 0 0 SS1-solenoid
+;--------------------------------------------BPM22
+DRIFT 100 14.5 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 300 -25 15 1.5 1.5 0 0 SSR13D_#72
+DRIFT 60 14.5 0
+DRIFT 15 14.5 0
+; Period #2 e.n.d-------------------------------------------------------------
+
+
+; Period #3 begin---------------------------------------------------------
+DRIFT 15 14.5 0
+DRIFT 60 14.5 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 300 -24 15 1.6 1.6 0 0 SSR13D_#72
+DRIFT 100 14.5 0
+FIELD_MAP 10 300 0 16 3.68 0 0 0 SS1-solenoid
+;--------------------------------------------BPM23
+DRIFT 100 14.5 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 300 -21 15 1.8 1.8 0 0 SSR13D_#72
+DRIFT 60 14.5 0
+DRIFT 15 14.5 0
+; Period #3 e.n.d--------------------------------------------------------
+
+; Period #4 begin--------------------------------------------------------
+DRIFT 15 14.5 0
+DRIFT 60 14.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 300 -20 15 1.7 1.7 0 0 SSR13D_#72
+DRIFT 100 14.5 0
+FIELD_MAP 10 300 0 16 -4.10 0 0 0 SS1-solenoid
+;--------------------------------------------BPM24
+DRIFT 100 14.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 300 -28 15 2.05 2.05 0 0 SSR13D_#72
+DRIFT 60 14.5 0
+DRIFT 15 14.5 0
+; Period #4 e.n.d---------------------------------------------------------
+LATTICE_END
+DRIFT 116.5 14.5 0
+DRIFT 35 15 0
+;============ End of first cryomodule of SSR1 (Valve flamge)======
+
+DRIFT 175 15 0
+
+
+
+;===============Begining of Second Cryomodule of SSR1 section============
+DRIFT 35 15 0
+DRIFT 116.5 15 0
+DRIFT 1e-010 15 0
+DRIFT 1e-010 15 0
+
+FREQ 325
+LATTICE 9 1
+
+; Period #1 begin---------------------------------------------------------
+DRIFT 15 14.5 0
+DRIFT 60 14.5 0
+
+SET_SYNC_PHASE 
+FIELD_MAP 7700 300 -26 15 2.05 2.05 0 0 SSR13D_#72
+DRIFT 100 14.5 0
+;MATCH_FAM_GRAD 2
+FIELD_MAP 10 300 0 16 4.15 0 0 0 SS1-solenoid
+;--------------------------------------------BPM21
+DRIFT 100 14.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 300 -20 15 1.9  1.9 0 0 SSR13D_#72
+DRIFT 60 14.5 0
+DRIFT 15 14.5 0
+; Period #1 e.n.d--------------------------------------------------------------
+
+
+
+; Period #2 begin-------------------------------------------------------------
+DRIFT 15 14.5 0
+DRIFT 60 14.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 300 -19 15 1.95 1.95 0 0 SSR13D_#72
+DRIFT 100 14.5 0
+FIELD_MAP 10 300 0 16 -3.61 0 0 0 SS1-solenoid
+;--------------------------------------------BPM22
+DRIFT 100 14.5 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 300 -20 15 2.05 2.05 0 0 SSR13D_#72
+DRIFT 60 14.5 0
+DRIFT 15 14.5 0
+; Period #2 e.n.d-------------------------------------------------------------
+
+
+; Period #3 begin---------------------------------------------------------
+DRIFT 15 14.5 0
+DRIFT 60 14.5 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 300 -18 15 2.05 2.05 0 0 SSR13D_#72
+DRIFT 100 14.5 0
+FIELD_MAP 10 300 0 16 3.51 0 0 0 SS1-solenoid
+;--------------------------------------------BPM23
+DRIFT 100 14.5 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 300 -18 15 2.05 2.05 0 0 SSR13D_#72
+DRIFT 60 14.5 0
+DRIFT 15 14.5 0
+; Period #3 e.n.d--------------------------------------------------------
+
+
+; Period #4 begin--------------------------------------------------------
+DRIFT 15 14.5 0
+DRIFT 60 14.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 300 -15 15 2.05 2.05 0 0 SSR13D_#72
+DRIFT 100 14.5 0
+FIELD_MAP 10 300 0 16 -3.76 0 0 0 SS1-solenoid
+;--------------------------------------------BPM24
+DRIFT 100 14.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 300 -34 15 2.05 2.05 0 0 SSR13D_#72
+DRIFT 60 14.5 0
+DRIFT 15 14.5 0
+; Period #4 e.n.d---------------------------------------------------------
+LATTICE_END
+
+
+DRIFT 116.5 14.5 0
+DRIFT 35 15 0
+
+;============ End of second cryomodule of SSR1======
+DRIFT 249.5 15 0
+
+;READ_DST C:\Users\asaini\Documents\TraceWin\Work\CWLinac\RDR_Design_22Feb2013\Working\CombinedSections\MEBT+HWR\SSR1_end.dst
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+;================== SSR2 Section  Begining ==================
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+LATTICE 13 1 
+FREQ 325
+
+;====================  SSR2 cryomodule 1 ===================
+;---------begin period 1
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+FIELD_MAP 10 320 0 20 3.34 0 0 0 SS-2_solenoid
+DRIFT 93 20 0
+DRIFT 244 20 0
+;
+DRIFT 14.65 20 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 476.7 -25 20 5 5 0 0 SSR2_beta047_v26
+;FIELD_MAP 7700 506 -45 20 5 5 0 0 SSR2_beta051
+DRIFT 14.65 20 0
+
+DRIFT 244 20 0
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -19 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 122 20 0
+
+
+
+;---------begin period 2
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+FIELD_MAP 10 320 0 20 -3.95 0 0 0 SS-2_solenoid
+DRIFT 93 20 0
+DRIFT 244 20 0
+
+
+DRIFT 14.65 20 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 476.7 -17 20 5 5 0 0 SSR2_beta047_v26
+;FIELD_MAP 7700 506 -45 20 5 5 0 0 SSR2_beta051
+DRIFT 14.65 20 0
+
+DRIFT 244 20 0
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -18 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 122 20 0
+
+
+;---------begin period 3
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+FIELD_MAP 10 320 0 20 4.0 0 0 0 SS-2_solenoid
+DRIFT 93 20 0
+DRIFT 244 20 0
+;
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -30 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+
+DRIFT 244 20 0
+DRIFT 1e-06 20 0
+DRIFT 506 20 0
+DRIFT 1e-06 20 0
+
+DRIFT 122 20 0
+
+;===================  end of cryomodule 1 =====
+
+
+;READ_DST C:\Users\asaini\Documents\TraceWin\Work\CWLinac\PIP_II\CDR_Optics\Working\SSR2_1End.dst  
+
+
+
+;=========================== SSR2 - Cryomodule 2 =======
+;---------begin period 4
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+FIELD_MAP 10 320 0 20 -3.9 0 0 0 SS-2_solenoid
+DRIFT 93 20 0
+DRIFT 244 20 0
+;
+
+
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -20 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+
+
+DRIFT 244 20 0
+
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -16 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+
+DRIFT 122 20 0
+
+;---------begin period 5
+
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+FIELD_MAP 10 320 0 20 4. 0 0 0 SS-2_solenoid
+DRIFT 93 20 0
+DRIFT 244 20 0
+;
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -15 20 4.9 4.9 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+
+
+DRIFT 244 20 0
+
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -15 20 4.6 4.6 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+
+DRIFT 122 20 0
+;end
+;---------begin period 6
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+FIELD_MAP 10 320 0 20 -4.13 0 0 0 SS-2_solenoid
+DRIFT 93 20 0
+DRIFT 244 20 0
+;
+
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -33 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+
+
+DRIFT 244 20 0
+;SET_SYNC_PHASE
+;FIELD_MAP 7700 506 -30.5 20 5.0 5.0 0 0 SSR2_beta051
+DRIFT 1e-06 20 0
+DRIFT 506 20 0
+DRIFT 1e-06 20 0
+DRIFT 122 20 0
+
+; ====================  end of cryomodule 2 =======
+
+
+;=========================== SSR2 - Cryomodule 3 =======
+;---------begin period 7
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+FIELD_MAP 10 320 0 20 4.05 0 0 0 SS-2_solenoid
+DRIFT 93 20 0
+DRIFT 244 20 0
+;
+
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -24 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 244 20 0
+
+
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -19 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 122 20 0
+
+;---------begin period 8
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+;DRIFT 1e-06 20 0
+FIELD_MAP 10 320 0 20 -4.1 0 0 0 SS-2_solenoid
+;DRIFT 1e-06 20 0
+DRIFT 93 20 0
+DRIFT 244 20 0
+;
+
+
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -16 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+
+DRIFT 244 20 0
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -13 20 4.8 4.8 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 122 20 0
+
+;---------begin period 9
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+FIELD_MAP 10 320 0 20  4.04 0 0 0 SS-2_solenoid
+DRIFT 93 20 0
+DRIFT 244 20 0
+;
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -35 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 244 20 0
+;SET_SYNC_PHASE
+;FIELD_MAP 7700 506 -28.5 20 5.0 5.0 0 0 SSR2_beta051
+
+DRIFT 1e-06 20 0
+DRIFT 506 20 0
+DRIFT 1e-06 20 0
+DRIFT 122 20 0
+
+; ====================  end of cryomodule 3 =======
+
+
+;=========================== SSR2 - Cryomodule 4 =======
+;  
+;---------begin period 10
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+FIELD_MAP 10 320 0 20 -3.9 0 0 0 SS-2_solenoid
+DRIFT 93 20 0
+DRIFT 244 20 0
+;
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -23 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 244 20 0
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -14 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 122 20 0
+
+;---------begin period 11
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+FIELD_MAP 10 320 0 20 4.05 0 0 0 SS-2_solenoid
+DRIFT 93 20 0
+DRIFT 244 20 0
+;
+
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -16 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 244 20 0
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -13 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 122 20 0
+
+;---------begin period 12
+
+
+
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+FIELD_MAP 10 320 0 20 -4.0 0 0 0 SS-2_solenoid
+DRIFT 93 20 0
+DRIFT 244 20 0
+;
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -30 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 244 20 0
+
+DRIFT 1e-06 20 0
+DRIFT 506 20 0
+DRIFT 1e-06 20 0
+DRIFT 122 20 0
+
+; ====================  end of cryomodule 4 =======
+
+
+
+;=========================== SSR2 - Cryomodule 5 =======
+
+;---------begin period 13
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+FIELD_MAP 10 320 0 20 3.95 0 0 0 SS-2_solenoid
+DRIFT 93 20 0
+DRIFT 244 20 0
+;
+
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -20 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 244 20 0
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -15 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 122 20 0
+
+;---------begin period 14
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+FIELD_MAP 10 320 0 20 -4.01 0 0 0 SS-2_solenoid
+DRIFT 93 20 0
+DRIFT 244 20 0
+;
+
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -14 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 244 20 0
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -13 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 122 20 0
+
+;---------begin period 15
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+FIELD_MAP 10 320 0 20 -4.0 0 0 0 SS-2_solenoid
+DRIFT 93 20 0
+DRIFT 244 20 0
+;
+
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -30 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 244 20 0
+
+DRIFT 1e-06 20 0
+DRIFT 506 20 0
+DRIFT 1e-06 20 0
+DRIFT 122 20 0
+
+; ====================  end of cryomodule 5 =======
+; READ_DST C:\Users\asaini\Documents\TraceWin\Work\CWLinac\PIP_II\Working\CDR_Lattice_v_1_1\SSR2_5CMEnd.dstLB650_9CM
+;=========================== SSR2 - Cryomodule 6 =======
+
+;---------begin period 16
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+FIELD_MAP 10 320 0 20 4.0 0 0 0 SS-2_solenoid
+DRIFT 93 20 0
+DRIFT 244 20 0
+;
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -24 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 244 20 0
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -14 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 122 20 0
+
+;---------begin period 17
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+FIELD_MAP 10 320 0 20 -4.0 0 0 0 SS-2_solenoid
+DRIFT 93 20 0
+DRIFT 244 20 0
+;
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -14 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 244 20 0
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -14 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 122 20 0
+
+
+;---------begin period 18
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+FIELD_MAP 10 320 0 20 4.20203 0 0 0 SS-2_solenoid
+DRIFT 93 20 0
+DRIFT 244 20 0
+;
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -26 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 244 20 0
+;SET_SYNC_PHASE
+;FIELD_MAP 7700 506 -21 20 5.0 5.0 0 0 SSR2_beta051
+;DRIFT 122 20 0
+DRIFT 1e-06 20 0
+DRIFT 506 20 0
+DRIFT 1e-06 20 
+DRIFT 122 20 0
+; ====================  end of cryomodule 6 =======
+;End 
+
+;READ_DST C:\Users\asaini\Documents\TraceWin\Work\CWLinac\PIP_II\CDR_Optics\Working\SSR2_6End.dst  
+
+
+;=========================== SSR2 - Cryomodule 7 =======
+;
+;---------begin period 19
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+FIELD_MAP 10 320 0 20 3.8 0 0 0 SS-2_solenoid
+DRIFT 93 20 0
+DRIFT 244 20 0
+;
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -26 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 244 20 0
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -17 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 122 20 0
+
+;---------begin period 20
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+FIELD_MAP 10 320 0 20 -3.8 0 0 0 SS-2_solenoid
+DRIFT 93 20 0
+DRIFT 244 20 0
+;
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -16 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 244 20 0
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -16 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 122 20 0
+
+;---------begin period 21
+
+DRIFT 122 20 0
+DRIFT 93 20 0
+FIELD_MAP 10 320 0 20 -3.65 0 0 0 SS-2_solenoid
+DRIFT 93 20 0
+DRIFT 244 20 0
+;
+DRIFT 14.65 20 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 476.7 -23 20 5 5 0 0 SSR2_beta047_v26
+DRIFT 14.65 20 0
+DRIFT 244 20 0
+;SET_SYNC_PHASE
+;FIELD_MAP 7700 506 -18 20 5.0 5.0 0 0 SSR2_beta051
+DRIFT 1e-06 20 
+DRIFT 506 20 0
+DRIFT 1e-06 20 
+DRIFT 122 20 0
+
+; ====================  end of cryomodule 7 =======
+
+lattice_end
+
+
+;////////////////////////////  End of SSR2 (beta=0.51)  Section \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+;READ_DST C:\Users\asaini\Documents\TraceWin\Work\CWLinac\PIP_II\Working\CDR_Lattice_v_1_1\SSR2End.dst
+;DRIFT 1e-010 41.5 0
+DRIFT 400 22 0
+
+
+;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+;////////////////////////////  Begining of Beta 0.61 Cavity Section \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+LATTICE 18 0 
+FREQ 650
+
+;----------------------------------------------Warm  section --------------------------------
+QUAD 200 7.45  22 0 0 0 0 0
+DRIFT 150 22 0
+DRIFT 100 22 0   ;   ------------------  xy correctors
+DRIFT 150 22 0
+QUAD 200 -7.75 22 0 0 0 0 0
+
+;=============== I-st LB Cryomodule=========================
+
+DRIFT 400 41.5 0   ; ---------- (incl. bellow, valve, warm-cold transion) up to  CM flange
+DRIFT 25 41.5 0; 
+DRIFT 170 41.5 0; 
+SET_SYNC_PHASE 
+FIELD_MAP 7700 900 -20 41.5 6.5 6.5 0 0 beta063D_#43
+DRIFT 50 41.5 0
+DRIFT 234 41.5 0
+;
+SET_SYNC_PHASE
+FIELD_MAP 7700 900 -19 41.5 6.2 6.2 0 0 beta063D_#43
+DRIFT 50 41.5 0
+DRIFT 234 41.5 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 900 -18 41.5 5.8 5.8 0 0 beta063D_#43
+DRIFT 25 41.5 0
+DRIFT 283 41.5 0
+
+DRIFT 400 22 0
+;----------------------------------------------Warm  section --------------------------------
+
+QUAD 200 8.75 22 0 0 0 0 0
+DRIFT 150 22 0
+DRIFT 100 22 0   ;   ------------------  xy correctors
+DRIFT 150 22 0
+QUAD 200 -8.18 22 0 0 0 0 0
+;------------------------------------------------------------------------ 
+
+;=============== II-nd LB Cryomodule=========================
+
+DRIFT 400 41.5 0   ; ---------- (incl. bellow, valve, warm-cold transion) up to  CM flange
+DRIFT 25 41.5 0; 
+DRIFT 170 41.5 0; 
+SET_SYNC_PHASE
+FIELD_MAP 7700 900 -15 41.5 7.5 7.5 0 0 beta063D_#43
+DRIFT 50 41.5 0; 
+DRIFT 234 41.5 0
+
+
+SET_SYNC_PHASE 
+FIELD_MAP 7700 900 -14 41.5 6.6 6.6 0 0 beta063D_#43
+DRIFT 50 41.5 0; 
+DRIFT 234 41.5 0
+
+
+SET_SYNC_PHASE
+FIELD_MAP 7700 900 -17 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 25 41.5 0; 
+
+DRIFT 400 41.5 0    ; ---------- (incl. bellow, valve, warm-cold transion) up to  CM flange
+DRIFT 283 41.5 0
+;----------------------------------------------Warm  section --------------------------------
+
+QUAD 200 8.53 22 0 0 0 0 0
+DRIFT 150 22 0
+DRIFT 100 22 0   ;   ------------------  xy correctors
+DRIFT 150 22 0
+QUAD 200 -8.51 22 0 0 0 0 0
+;------------------------------------------------------------------------
+
+;=============== III-rd LB Cryomodule=========================
+; 
+DRIFT 400 41.5 0   ; ---------- (incl. bellow, valve, warm-cold transion) up to  CM flange
+DRIFT 25 41.5 0; 
+DRIFT 170 41.5 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 900 -17 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 50 41.5 0
+DRIFT 234 41.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 900 -13 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 50 41.5 0
+DRIFT 234 41.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 900 -14 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 25 41.5 0
+DRIFT 400 41.5 0   ; ---------- (incl. bellow, valve, warm-cold transion) up to  CM flange
+DRIFT 283 41.5 0
+ 
+;----------------------------------------------Warm  section --------------------------------
+
+QUAD 200 8.8 22 0 0 0 0 0
+DRIFT 150 22 0
+DRIFT 100 22 0   ;   ------------------  xy correctors
+DRIFT 150 22 0
+QUAD 200 -8.62 22 0 0 0 0 0
+;------------------------------------------------------------------------
+
+
+;=============== IV th LB Cryomodule=========================
+
+DRIFT 400 41.5 0   ; ---------- (incl. bellow, valve, warm-cold transion) up to  CM flange
+DRIFT 25 41.5 0; 
+DRIFT 170 41.5 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 900 -15 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 50 41.5 0
+DRIFT 234 41.5 0
+
+
+SET_SYNC_PHASE 
+FIELD_MAP 7700 900 -13 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 50 41.5 0
+DRIFT 234 41.5 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 900 -16 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 25 41.5 0; 
+DRIFT 400 41.5 0   ;  ; ---------- (incl. bellow, valve, warm-cold transion) up to  CM flange
+DRIFT 283 41.5 0
+;----------------------------------------------Warm  section --------------------------------
+
+QUAD 200 8.6 22 0 0 0 0 0
+DRIFT 150 22 0
+DRIFT 100 22 0   ;   ------------------  xy correctors
+DRIFT 150 22 0
+QUAD 200 -8.45 22 0 0 0 0 0
+;------------------------------------------------------------------------
+
+;=============== Vth LB Cryomodule=========================
+
+DRIFT 400 41.5 0   ; ---------- (incl. bellow, valve, warm-cold transion) up to  CM flange
+DRIFT 25 41.5 0; 
+DRIFT 170 41.5 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 900 -14 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 50 41.5 0
+DRIFT 234 41.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 900 -12 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 50 41.5 0
+DRIFT 234 41.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 900 -15 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 25 41.5 0; 
+DRIFT 400 41.5 0   ;  ; ---------- (incl. bellow, valve, warm-cold transion) up to  CM flang
+DRIFT 283 41.5 0
+;----------------------------------------------Warm  section --------------------------------
+
+QUAD 200 8.45 22 0 0 0 0 0
+DRIFT 150 22 0
+DRIFT 100 22 0   ;   ------------------  xy correctors
+DRIFT 150 22 0
+QUAD 200 -8.24 22 0 0 0 0 0
+;------------------------------------------------------------------------
+
+;=============== VI th LB Cryomodule=========================
+
+DRIFT 400 41.5 0   ; ---------- (incl. bellow, valve, warm-cold transion) up to  CM flange
+DRIFT 25 41.5 0; 
+DRIFT 170 41.5 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 900 -14 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 50 41.5 0
+DRIFT 234 41.5 0
+
+
+SET_SYNC_PHASE 
+FIELD_MAP 7700 900 -12 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 50 41.5 0
+DRIFT 234 41.5 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 900 -13 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 25 41.5 0; 
+DRIFT 400 41.5 0   ;  ; ---------- (incl. bellow, valve, warm-cold transion) up to  CM flang
+DRIFT 283 41.5 0
+;----------------------------------------------Warm  section --------------------------------
+
+QUAD 200 8.3 22 0 0 0 0 0
+DRIFT 150 22 0
+DRIFT 100 22 0   ;   ------------------  xy correctors
+DRIFT 150 22 0
+QUAD 200 -8.1 22 0 0 0 0 0
+;------------------------------------------------------------------------
+
+
+;=============== VII th LB Cryomodule=========================
+
+DRIFT 400 41.5 0   ; ---------- (incl. bellow, valve, warm-cold transion) up to  CM flange
+DRIFT 25 41.5 0; 
+DRIFT 170 41.5 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 900 -12 41.5 11.79 11.79 0 0 beta063D_#43
+
+DRIFT 50 41.5 0
+DRIFT 234 41.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 900 -12 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 50 41.5 0
+DRIFT 234 41.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 900 -14 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 25 41.5 0; 
+DRIFT 400 41.5 0   ;   ---------- (incl. bellow, valve, warm-cold transion) up to  CM flang 
+DRIFT 283 41.5 0
+;----------------------------------------------Warm  section --------------------------------
+
+;READ_DST C:\Users\asaini\Documents\TraceWin\Work\CWLinac\PIP_II\CDR_Optics\Working\LB_7End.dst
+
+QUAD 200 8.0 22 0 0 0 0 0
+DRIFT 150 22 0
+DRIFT 100 22 0   ;   ------------------  xy correctors
+DRIFT 150 22 0
+QUAD 200 -7.82 22 0 0 0 0 0
+;------------------------------------------------------------------------
+
+;=============== VIII th LB Cryomodule=========================
+
+DRIFT 400 41.5 0   ; ---------- (incl. bellow, valve, warm-cold transion) up to  CM flange
+DRIFT 25 41.5 0; 
+DRIFT 170 41.5 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 900 -14 41.5 11.79 11.79 0 0 beta063D_#43
+
+DRIFT 50 41.5 0
+DRIFT 234 41.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 900 -13 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 50 41.5 0
+DRIFT 234 41.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 900 -12 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 25 41.5 0; 
+DRIFT 400 41.5 0   ;   ---------- (incl. bellow, valve, warm-cold transion) up to  CM flang 
+DRIFT 283 41.5 0
+;----------------------------------------------Warm  section --------------------------------
+; ====================  end of cryomodule 5 =======
+;READ_DST C:\Users\asaini\Documents\TraceWin\Work\CWLinac\PIP_II\Working\CDR_Lattice_v_1_1\LB650_9CM.dst
+
+
+QUAD 200 7.92 22 0 0 0 0 0
+DRIFT 150 22 0
+DRIFT 100 22 0   ;   ------------------  xy correctors
+DRIFT 150 22 0
+QUAD 200 -7.79 22 0 0 0 0 0
+;------------------------------------------------------------------------
+
+
+;=============== IX th LB Cryomodule=========================
+DRIFT 400 41.5 0   ; ---------- (incl. bellow, valve, warm-cold transion) up to  CM flange
+DRIFT 25 41.5 0; 
+DRIFT 170 41.5 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 900 -13 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 50 41.5 0
+DRIFT 234 41.5 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 900 -12 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 50 41.5 0
+DRIFT 234 41.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 900 -12 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 25 41.5 0; 
+DRIFT 400 41.5 0   ;   ---------- (incl. bellow, valve, warm-cold transion) up to  CM flang 
+DRIFT 283 41.5 0
+;----------------------------------------------Warm  section --------------------------------
+
+
+
+QUAD 200 7.6 22 0 0 0 0 0
+DRIFT 150 22 0
+DRIFT 100 22 0   ;   ------------------  xy correctors
+DRIFT 150 22 0
+QUAD 200 -7.4 22 0 0 0 0 0
+;------------------------------------------------------------------------
+
+
+;=============== X th LB Cryomodule=========================
+DRIFT 400 41.5 0   ; ---------- (incl. bellow, valve, warm-cold transion) up to  CM flange
+DRIFT 25 41.5 0; 
+DRIFT 170 41.5 0
+
+SET_SYNC_PHASE
+FIELD_MAP 7700 900 -13 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 50 41.5 0
+DRIFT 234 41.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 900 -11 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 50 41.5 0
+DRIFT 234 41.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 900 -12 41.5 11.79 11.79 0 0 beta063D_#43
+
+DRIFT 25 41.5 0; 
+DRIFT 400 41.5 0   ;   ---------- (incl. bellow, valve, warm-cold transion) up to  CM flang 
+DRIFT 283 41.5 0
+;----------------------------------------------Warm  section --------------------------------
+
+QUAD 200 6.78 22 0 0 0 0 0
+DRIFT 150 22 0
+DRIFT 100 22 0   ;   ------------------  xy correctors
+DRIFT 150 22 0
+QUAD 200 -6.78 22 0 0 0 0 0
+;------------------------------------------------------------------------
+ 
+;=============== XI th LB Cryomodule=========================
+DRIFT 400 41.5 0   ; ---------- (incl. bellow, valve, warm-cold transion) up to  CM flange
+DRIFT 25 41.5 0;
+DRIFT 170 41.5 0
+
+SET_SYNC_PHASE
+FIELD_MAP 7700 900 -13 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 50 41.5 0
+DRIFT 234 41.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 900 -13 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 50 41.5 0
+DRIFT 234 41.5 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 900 -12 41.5 11.79 11.79 0 0 beta063D_#43
+DRIFT 25 41.5 0; 
+DRIFT 400 41.5 0   ;   ---------- (incl. bellow, valve, warm-cold transion) up to  CM flang 
+DRIFT 283 41.5 0
+;////////////////////////////////////////// end of LB650 section \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+LATTICE_END
+
+DRIFT 1e-009 41.5 0
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+;/////////////////////////////////////////  Begining of HE650  section \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+FREQ 650
+LATTICE 27 0 
+
+;----------------------------------------------Warm  section --------------------------------
+QUAD 200 9.7 22 0 0 0 0 0
+DRIFT 150 22 0
+DRIFT 100 22 0   ;   ------------------  xy correctors
+DRIFT 150 22 0
+QUAD 200 -9.37 22 0 0 0 0 0
+
+THIN_STEERING 0 -17.0e-06 15 0 ; --------- X-corrector
+
+;================  I- st CM HE650=========================
+DRIFT 400 59 0
+DRIFT 30 59 0
+DRIFT 66 59 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 1440 -11 59 17.5 17.5 0 0 beta092
+
+
+DRIFT 60 59 0
+DRIFT 25 59 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 1440 -11 59 18.5 18.5 0 0 beta092
+DRIFT 60 59 0
+DRIFT 25 59 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 1440 -11 59 18.5 18.5 0 0 beta092
+DRIFT 60 59 0
+DRIFT 25 59 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 1440 -11 59 18.5 18.5 0 0 beta092
+DRIFT 60 59 0
+DRIFT 25 59 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 1440 -11 59 18.5 18.5 0 0 beta092
+DRIFT 60 59 0
+DRIFT 25 59 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 1440 -23 59 19.81 19.81 0 0 beta092
+DRIFT 30 59 0
+DRIFT 179 59 0
+DRIFT 400 59 0    ; ---------- (incl. bellow, valve, warm-cold transion) up to  CM flange
+
+;================ end of I-st Cryomodule HE650 ==================
+
+;----------------------------------------------Warm  section --------------------------------
+QUAD 200 10.5  22 0 0 0 0 0
+DRIFT 150 22 0
+DRIFT 100 22 0   ;   ------------------  xy correctors
+DRIFT 150 22 0
+QUAD 200 -10.44 22 0 0 0 0 0
+
+
+THIN_STEERING 0 -60.0e-06 15 0 ; --------- X-corrector
+;==================== II- nd Cryomodule of HE650 =========================
+DRIFT 400 59 0
+DRIFT 30 59 0
+DRIFT 66 59 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 1440 -12 59 19.81 19.81 0 0 beta092
+
+DRIFT 60 59 0
+DRIFT 25 59 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 1440 -10 59 19.81 19.81 0 0 beta092
+DRIFT 60 59 0
+DRIFT 25 59 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 1440 -10 59 19.81 19.81 0 0 beta092
+DRIFT 60 59 0
+DRIFT 25 59 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 1440 -10 59 19.81 19.81 0 0 beta092
+DRIFT 60 59 0
+DRIFT 25 59 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 1440 -10 59 19.81 19.81 0 0 beta092
+DRIFT 60 59 0
+DRIFT 25 59 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 1440 -18 59 19.81 19.81 0 0 beta092
+DRIFT 30 59 0
+DRIFT 400 59 0    ; ---------- (incl. bellow, valve, warm-cold transion) up to  CM flange
+DRIFT 179 59 0
+;================ end of II-nd Cryomodule HE650 ==================
+
+
+;----------------------------------------------Warm  section --------------------------------
+QUAD 200 10.6 22 0 0 0 0 0
+DRIFT 150 22 0
+DRIFT 100 22 0   ;   ------------------  xy correctors
+DRIFT 150 22 0
+QUAD 200 -10.55 22 0 0 0 0 0
+THIN_STEERING 0 -50e-06 15 0 ; --------- X-corrector
+
+;========================================
+;THIN_STEERING 0 -60.0e-06 15 0 ; --------- X-corrector
+
+;==================== III- rd Cryomodule of HE650 =========================
+DRIFT 400 59 0
+DRIFT 30 59 0
+DRIFT 66 59 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 1440 -15 59 19.81 19.81 0 0 beta092
+DRIFT 60 59 0
+DRIFT 25 59 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 1440 -11 59 19.81 19.81 0 0 beta092
+DRIFT 60 59 0
+DRIFT 25 59 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 1440 -10 59 19.81 19.81 0 0 beta092
+DRIFT 60 59 0
+DRIFT 25 59 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 1440 -10 59 19.81 19.81 0 0 beta092
+DRIFT 60 59 0
+DRIFT 25 59 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 1440 -10 59 19.81 19.81 0 0 beta092
+DRIFT 60 59 0
+DRIFT 25 59 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 1440 -12 59 19.81 19.81 0 0 beta092
+DRIFT 30 59 0
+DRIFT 400 59 0    ; ---------- (incl. bellow, valve, warm-cold transion) up to  CM flange
+DRIFT 179 59 0
+
+;================ end of III-rd Cryomodule HE650 ==================
+
+
+;----------------------------------------------Warm  section --------------------------------
+QUAD 200 10.6 22 0 0 0 0 0
+DRIFT 150 22 0
+DRIFT 100 22 0   ;   ------------------  xy correctors
+DRIFT 150 22 0
+QUAD 200 -10.54 22 0 0 0 0 0
+ 
+;==================== IV- th Cryomodule of HE650 =========================
+
+DRIFT 400 59 0
+DRIFT 30 59 0
+DRIFT 66 59 0
+
+SET_SYNC_PHASE
+FIELD_MAP 7700 1440 -12 59 19.81 19.81 0 0 beta092
+DRIFT 60 59 0
+DRIFT 25 59 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 1440 -10 59 19.81 19.81 0 0 beta092
+DRIFT 60 59 0
+DRIFT 25 59 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 1440 -10 59 19.81 19.81 0 0 beta092
+DRIFT 60 59 0
+DRIFT 25 59 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 1440 -10 59 19.81 19.81 0 0 beta092
+DRIFT 60 59 0
+DRIFT 25 59 0
+SET_SYNC_PHASE
+FIELD_MAP 7700 1440 -10 59 19.81 19.81 0 0 beta092
+DRIFT 60 59 0
+DRIFT 25 59 0
+SET_SYNC_PHASE 
+FIELD_MAP 7700 1440 -10 59 19.81 19.81 0 0 beta092
+DRIFT 30 59 0
+DRIFT 400 59 0
+DRIFT 179 59 0
+;================ end of IV-th Cryomodule HE650 ==================
+
+END
+

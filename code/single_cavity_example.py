@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 import math
 import numpy
@@ -71,7 +71,6 @@ if __name__ == "__main__":
     simulation_0.run(beam1)
     print("Finished running simulation.")
 
-    print beam1.z
     ## Plotting of the simulation results
     if args.plot:
 

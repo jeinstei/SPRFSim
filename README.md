@@ -10,7 +10,7 @@ Run "python single_cavity_example.py"
 
 ## Requirements
 
-This code has only been tested on Python 2.7.15 It requires:
+This code has only been tested on Python 2.7.15. While it has been updated and run on Python 3.9.13, proper output has not been verified. It requires:
 
 Numpy
 Scipy
